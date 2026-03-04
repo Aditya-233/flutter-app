@@ -1,0 +1,39 @@
+name: check_it
+description: "CheckIT - A streamlined task management system for Admins and Employees."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  firebase_core: ^3.11.0
+  cloud_firestore: ^5.6.0
+  firebase_auth: ^5.5.0
+  app_links: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  # Added for the "Easy Way" logo generation
+  flutter_launcher_icons: "^0.13.1"
+
+flutter:
+  uses-material-design: true
+
+  # Added to recognize your logo file
+  assets:
+    - assets/logo.png
+
+# Configuration for your new black-and-white CheckIT logo
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo.png"
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/logo.png"

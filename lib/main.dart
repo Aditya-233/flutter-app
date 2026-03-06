@@ -35,26 +35,34 @@ class CheckItApp extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFF0052CC),
             foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         ),
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: const Color(0xFF4C9AFF),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             foregroundColor: const Color(0xFF172B4D),
             side: const BorderSide(color: Color(0xFF172B4D)),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         ),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: Color(0xFF0052CC),
           foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
         ),
       ),
       home: const LoginScreen(),
@@ -129,18 +137,27 @@ class _LoginScreenState extends State<LoginScreen> {
       if (!mounted) return;
 
       if (role == 'admin') {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => AdminDashboard(adminData: response)));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (_) => AdminDashboard(adminData: response),
+          ),
+        );
       } else {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => EmployeeTaskView(
-          employeeId: response['id'],
-          employeeName: response['display_name'],
-          isAdmin: false,
-          currentUserId: response['id'],
-          currentUserName: response['display_name'],
-          workspaceAdminId: null,
-        )));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (_) => EmployeeTaskView(
+              employeeId: response['id'],
+              employeeName: response['display_name'],
+              isAdmin: false,
+              currentUserId: response['id'],
+              currentUserName: response['display_name'],
+              workspaceAdminId: null,
+            ),
+          ),
+        );
       }
-
     } catch (e) {
       debugPrint('🚨 FIREBASE ERROR: $e');
       _showError('Error connecting to database.');
@@ -150,7 +167,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _showError(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg), backgroundColor: Colors.redAccent));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(msg), backgroundColor: Colors.redAccent),
+    );
   }
 
   @override
@@ -164,7 +183,16 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text('CHECKIT', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 64, fontWeight: FontWeight.w900, letterSpacing: -2)),
+              const Text(
+                'CHECKIT',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 64,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: -2,
+                ),
+              ),
               const SizedBox(height: 60),
               TextField(
                 controller: _userController,
@@ -175,8 +203,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintStyle: const TextStyle(color: Color(0xFF7A869A)),
                   filled: true,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-                  focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: Color(0xFF4C9AFF), width: 2)),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(
+                      color: Color(0xFF4C9AFF),
+                      width: 2,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -190,11 +227,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintStyle: const TextStyle(color: Color(0xFF7A869A)),
                   filled: true,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-                  focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: Color(0xFF4C9AFF), width: 2)),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(
+                      color: Color(0xFF4C9AFF),
+                      width: 2,
+                    ),
+                  ),
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      _obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                       color: const Color(0xFF7A869A),
                     ),
                     onPressed: () {
@@ -210,14 +258,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 60,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white, 
-                    foregroundColor: const Color(0xFF0052CC), 
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color(0xFF0052CC),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                   onPressed: _isLoading ? null : _handleLogin,
                   child: _isLoading
-                      ? const CircularProgressIndicator(color: Color(0xFF0052CC))
-                      : const Text('LOGIN', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                      ? const CircularProgressIndicator(
+                          color: Color(0xFF0052CC),
+                        )
+                      : const Text(
+                          'LOGIN',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
               ),
             ],
